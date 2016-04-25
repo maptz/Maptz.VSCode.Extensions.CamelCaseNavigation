@@ -1,5 +1,7 @@
 # Visual Studio Camel Case Navigation Extension
 
+![Header]("imgs/Icon.png")
+
 This extension provides camel-case navigation to the Visual Studio Code editor.
 
 It works by adding four extension methods to the IDE which override the default actions for the `left` and `right` arrow keys.  
