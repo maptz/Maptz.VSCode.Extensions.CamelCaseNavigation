@@ -1,0 +1,66 @@
+{
+    "name": "camelcasenavigation",
+    "displayName": "Camel Case Navigation",
+    "description": "Provides Camel Case cursor navigation for the Visual Studio Code editor.",
+    "version": "0.1.0",
+    "publisher": "maptz",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "repository": "https://github.com/woodced/Maptz.VSCode.Extensions.CamelCaseNavigation",
+    "categories": [
+        "Other"
+    ],
+    "icon": "imgs/Icon.png",
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.extendCamelLeftCommand",
+                "title": "Extend Camel Left"
+            },
+            {
+                "command": "extension.extendCamelRightCommand",
+                "title": "Extend Camel Right"
+            },
+            {
+                "command": "extension.moveCamelLeftCommand",
+                "title": "Move Camel Left"
+            },
+            {
+                "command": "extension.moveCamelRightCommand",
+                "title": "Move Camel Right"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.extendCamelLeftCommand",
+                "key": "ctrl+shift+left"
+            },
+            {
+                "command": "extension.extendCamelRightCommand",
+                "key": "ctrl+shift+right"
+            },
+            {
+                "command": "extension.moveCamelLeftCommand",
+                "key": "ctrl+left"
+            },
+            {
+                "command": "extension.moveCamelRightCommand",
+                "key": "ctrl+right"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    }
+}
