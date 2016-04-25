@@ -1,6 +1,6 @@
 # Visual Studio Camel Case Navigation Extension
 
-![Header]("https://raw.githubusercontent.com/woodced/Maptz.VSCode.Extensions.CamelCaseNavigation/master/imgs/Icon.png")
+![Header](https://raw.githubusercontent.com/woodced/Maptz.VSCode.Extensions.CamelCaseNavigation/master/imgs/Icon.png)
 
 This extension provides camel-case navigation to the Visual Studio Code editor.
 
