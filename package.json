@@ -2,7 +2,7 @@
     "name": "camelcasenavigation",
     "displayName": "Camel Case Navigation",
     "description": "Provides Camel Case cursor navigation for the Visual Studio Code editor.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "publisher": "maptz",
     "engines": {
         "vscode": "^1.0.0"
@@ -21,7 +21,6 @@
             {
                 "command": "extension.extendCamelLeftCommand",
                 "title": "Extend Camel Left"
-                
             },
             {
                 "command": "extension.extendCamelRightCommand",
