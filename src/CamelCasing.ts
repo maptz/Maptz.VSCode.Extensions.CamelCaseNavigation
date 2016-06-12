@@ -3,7 +3,6 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-
 export class CamelComponent {
     private _text = "";
     public get text() {
