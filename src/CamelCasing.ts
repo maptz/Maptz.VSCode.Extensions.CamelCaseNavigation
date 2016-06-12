@@ -162,7 +162,8 @@ export class CamelComponent {
             if (/[a-z]+/.test(c) || /[0-9]+/.test(c)) {
                 //If the character is a letter or a number, we can only add another letter if this word is one upper case letter long or zero-length.
                 //NOTE we've already encountered the zero case. 
-                return this.text.length == 1;
+                //return this.text.length == 1;
+                return true;
             }
         }
         //If this is a valid word consisting of lower case elements and digits. Allow addition of any lower case character or number but nothing else. 
