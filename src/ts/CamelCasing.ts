@@ -5,7 +5,7 @@ import * as vscode from 'vscode';
 
 export class CamelComponent {
     private _text = "";
-    public get text() {
+    public get text() : string {
         return this._text;
     }
 
@@ -36,12 +36,35 @@ export class CamelComponent {
         let areAllCharactersSymbols = true;
         for (var index = 0; index < this.text.length; index++) {
             var element = this.text[index];
-            if (/[0-9A-Za-z\s]+/.test(element)) {
+            if (CamelComponent.isSpace(element)||CamelComponent.isLetterOrNumber(element)) {
                 areAllCharactersSymbols = false;
                 break;
             }
         }
         return areAllCharactersSymbols;
+    }
+
+    public static isLetterOrNumber(char: string){
+        return /[0-9A-Za-z]+/.test(char);   //TODO accents 
+    }
+
+    public static isSymbol(char: string){
+        return !/[0-9A-Za-z]+/.test(char);       //TODO accents
+    }
+
+       public static isNumber(char: string){
+        return /[0-9]+/.test(char);    
+    }
+
+    public static isUpperCase(char: string){
+         return /[A-Z]+/.test(char);       //TODO accents
+    }
+
+    public static isLowerFase(char: string){
+         return /[a-z]+/.test(char);       //TODO accents
+    }
+     public static isSpace(char: string){
+         return /[\s]+/.test(char);    
     }
 
 
@@ -55,7 +78,7 @@ export class CamelComponent {
         let areAllCharsLettersOrDigits = true;
         for (var index = 0; index < this.text.length; index++) {
             var element = this.text[index];
-            if (!/[0-9A-Za-z]+/.test(element)) {
+            if (!CamelComponent.isLetterOrNumber(element)) {
                 areAllCharsLettersOrDigits = false;
                 break;
             }
@@ -70,16 +93,16 @@ export class CamelComponent {
         let remainder = this.text.substr(1);
 
         //Get a value indicating if the first letter is uppercase. 
-        let isFirstLetterUpperCase = /[A-Z]+/.test(this.text.substr(0, 1));
+        let isFirstLetterUpperCase = CamelComponent.isUpperCase(this.text.substr(0, 1));
 
         //Get a value indicating whether all the character other than the first letter are lower case or digits.
         let remainderIsLowerCaseOrDigits = true;
         for (let index = 0; index < remainder.length; index++) {
             let element = remainder[index];
-            if (/[a-z]+/.test(element)) {
+            if (CamelComponent.isLowerFase(element)) {
 
             }
-            else if (/[0-9]+/.test(element)) {
+            else if (CamelComponent.isNumber(element)) {
 
             }
             else {
@@ -91,7 +114,7 @@ export class CamelComponent {
         let remainderIsUpper = true;
         for (let index = 0; index < remainder.length; index++) {
             let element = remainder[index];
-            if (/[A-Z]+/.test(element)) {
+            if (CamelComponent.isUpperCase(element)) {
 
             }
             else {
@@ -137,7 +160,7 @@ export class CamelComponent {
             return c == ' ';
 
         if (this.isSymbolComponent) {
-            let isLetterOrDigit = /[0-9A-Za-z]+/.test(c);
+            let isLetterOrDigit = CamelComponent.isLetterOrNumber(c);
             //If this word is a symbol word, then return true if and only if the specified character is a symbol of the same kind
             return (c != ' ') && (!isLetterOrDigit) && this.text[0] == c;
         }
@@ -145,7 +168,7 @@ export class CamelComponent {
         let isAllUpper = true;
         for (var index = 0; index < this.text.length; index++) {
             var element = this.text[index];
-            var isUpper = /[A-Z]+/.test(element);
+            var isUpper = CamelComponent.isUpperCase(element);
             if (!isUpper) {
                 isAllUpper = false;
             }
@@ -154,11 +177,11 @@ export class CamelComponent {
 
         if (isAllUpper) {
             //If this is all upper case, then you can add any upper case letter. 
-            if (/[A-Z]+/.test(c))
+            if (CamelComponent.isUpperCase(c))
                 //If the specified char is upper case, return true. 
                 return true;
 
-            if (/[a-z]+/.test(c) || /[0-9]+/.test(c)) {
+            if (CamelComponent.isLowerFase(c) ||CamelComponent.isNumber(c)) {
                 //If the character is a letter or a number, we can only add another letter if this word is one upper case letter long or zero-length.
                 //NOTE we've already encountered the zero case. 
                 //return this.text.length == 1;
@@ -166,7 +189,7 @@ export class CamelComponent {
             }
         }
         //If this is a valid word consisting of lower case elements and digits. Allow addition of any lower case character or number but nothing else. 
-        return (/[a-z]+/.test(c) || /[0-9]+/.test(c));
+        return  (CamelComponent.isLowerFase(c) ||CamelComponent.isNumber(c));
 
     }
 }

@@ -25,8 +25,6 @@ export function activate(context: vscode.ExtensionContext) {
         camelCaseMover.moveCamelCaseRight(true);
     });
 
-
-
     context.subscriptions.push(moveCamelLeft);
     context.subscriptions.push(moveCamelRight);
     context.subscriptions.push(extendCamelLeft);
