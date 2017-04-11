@@ -5,7 +5,7 @@ import * as vscode from 'vscode';
 
 export class CamelComponent {
     private _text = "";
-    public get text() : string {
+    public get text(): string {
         return this._text;
     }
 
@@ -36,7 +36,7 @@ export class CamelComponent {
         let areAllCharactersSymbols = true;
         for (var index = 0; index < this.text.length; index++) {
             var element = this.text[index];
-            if (CamelComponent.isSpace(element)||CamelComponent.isLetterOrNumber(element)) {
+            if (CamelComponent.isSpace(element) || CamelComponent.isLetterOrNumber(element)) {
                 areAllCharactersSymbols = false;
                 break;
             }
@@ -44,27 +44,33 @@ export class CamelComponent {
         return areAllCharactersSymbols;
     }
 
-    public static isLetterOrNumber(char: string){
-        return /[0-9A-Za-z]+/.test(char);   //TODO accents 
+    public static isLetterOrNumber(char: string) {
+        return /[0-9A-Za-zÀ-ÿ]+/.test(char);
     }
 
-    public static isSymbol(char: string){
-        return !/[0-9A-Za-z]+/.test(char);       //TODO accents
+    public static isLetter(char: string) {
+        return /[A-Za-zÀ-ÿ]+/.test(char);   
     }
 
-       public static isNumber(char: string){
-        return /[0-9]+/.test(char);    
+    public static isSymbol(char: string) {
+        return !/[0-9A-Za-zÀ-ÿ]+/.test(char);     
     }
 
-    public static isUpperCase(char: string){
-         return /[A-Z]+/.test(char);       //TODO accents
+    public static isNumber(char: string) {
+        return /[0-9]+/.test(char);
     }
 
-    public static isLowerFase(char: string){
-         return /[a-z]+/.test(char);       //TODO accents
+    public static isUpperCase(char: string) {
+        var isLetter = CamelComponent.isLetter(char);
+        return  isLetter && char.toUpperCase() == char;
     }
-     public static isSpace(char: string){
-         return /[\s]+/.test(char);    
+
+    public static isLowerFase(char: string) {
+        var isLetter = CamelComponent.isLetter(char);
+        return  isLetter && char.toLowerCase() == char;
+    }
+    public static isSpace(char: string) {
+        return /[\s]+/.test(char);
     }
 
 
@@ -181,7 +187,7 @@ export class CamelComponent {
                 //If the specified char is upper case, return true. 
                 return true;
 
-            if (CamelComponent.isLowerFase(c) ||CamelComponent.isNumber(c)) {
+            if (CamelComponent.isLowerFase(c) || CamelComponent.isNumber(c)) {
                 //If the character is a letter or a number, we can only add another letter if this word is one upper case letter long or zero-length.
                 //NOTE we've already encountered the zero case. 
                 //return this.text.length == 1;
@@ -189,7 +195,7 @@ export class CamelComponent {
             }
         }
         //If this is a valid word consisting of lower case elements and digits. Allow addition of any lower case character or number but nothing else. 
-        return  (CamelComponent.isLowerFase(c) ||CamelComponent.isNumber(c));
+        return (CamelComponent.isLowerFase(c) || CamelComponent.isNumber(c));
 
     }
 }

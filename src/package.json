@@ -2,10 +2,10 @@
     "name": "camelcasenavigation",
     "displayName": "Camel Case Navigation",
     "description": "Provides Camel Case cursor navigation for the Visual Studio Code editor.",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "publisher": "maptz",
     "engines": {
-        "vscode": "^1.0.0"
+        "vscode": "^1.10.0"
     },
     "repository": "https://github.com/woodced/Maptz.VSCode.Extensions.CamelCaseNavigation",
     "categories": [
@@ -15,7 +15,7 @@
     "activationEvents": [
         "*"
     ],
-    "main": "./out/src/extension",
+    "main": "./out/ts/extension.js",
     "contributes": {
         "commands": [
             {
