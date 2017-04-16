@@ -1,20 +1,21 @@
 'use strict';
-var vscode = require('vscode');
-var CamelCasing = require('./CamelCasing');
+Object.defineProperty(exports, "__esModule", { value: true });
+const vscode = require("vscode");
+const CamelCasing = require("./CamelCasing");
 function activate(context) {
-    var camelCaseMover;
+    let camelCaseMover;
     camelCaseMover = new CamelCasing.CamelCaseNavigatorService();
-    var moveCamelLeft = vscode.commands.registerCommand('extension.moveCamelLeftCommand', function () {
+    let moveCamelLeft = vscode.commands.registerCommand('extension.moveCamelLeftCommand', () => {
         camelCaseMover.moveCamelCaseLeft(false);
     });
-    var moveCamelRight = vscode.commands.registerCommand('extension.moveCamelRightCommand', function () {
+    let moveCamelRight = vscode.commands.registerCommand('extension.moveCamelRightCommand', () => {
         camelCaseMover.moveCamelCaseRight(false);
     });
     // The commandId parameter must match the command field in package.json
-    var extendCamelLeft = vscode.commands.registerCommand('extension.extendCamelLeftCommand', function () {
+    let extendCamelLeft = vscode.commands.registerCommand('extension.extendCamelLeftCommand', () => {
         camelCaseMover.moveCamelCaseLeft(true);
     });
-    var extendCamelRight = vscode.commands.registerCommand('extension.extendCamelRightCommand', function () {
+    let extendCamelRight = vscode.commands.registerCommand('extension.extendCamelRightCommand', () => {
         camelCaseMover.moveCamelCaseRight(true);
     });
     context.subscriptions.push(moveCamelLeft);

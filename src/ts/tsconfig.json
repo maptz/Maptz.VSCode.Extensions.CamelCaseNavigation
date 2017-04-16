@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "../out/",
+         "module": "commonjs",
+        "target": "es6",
+        "lib": [
+            "es6"
+        ],
+        "sourceMap": true
+    },
+    "include": [
+        "*.ts",
+        "../typings/node.d.ts",
+        "../typings/vscode-typings.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
