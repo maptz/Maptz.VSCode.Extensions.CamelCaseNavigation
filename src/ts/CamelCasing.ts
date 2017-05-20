@@ -7,7 +7,7 @@ const xregexp = require('xregexp');
 export class CamelComponent {
     private _text = "";
     private static _letterRegexp = new xregexp('\\pL+');
-    
+
     public get text(): string {
         return this._text;
     }
@@ -301,11 +301,32 @@ export class CamelCasingHelper {
 }
 
 export interface ICamelCaseNavigatorService {
+    deleteCamel() ;
     moveCamelCaseLeft(extendSelection: boolean);
     moveCamelCaseRight(extendSelection: boolean);
 }
 
 export class CamelCaseNavigatorService implements ICamelCaseNavigatorService {
+
+
+    public deleteCamel() {
+        // var deleteCamel = true;
+        // for (let sel of vscode.window.activeTextEditor.selections) {
+        //     deleteCamel = deleteCamel && sel.end.isEqual(sel.start);
+        // }
+
+        // //If there are no selections, then we'll select back one space in the camel direction...
+        // if (deleteCamel){
+        //     this.moveCamelCaseLeft(true);
+        // }
+        //and then just normally delete the selection.
+        var commands = vscode.commands.getCommands();
+        debugger;
+        throw "Delete command";
+        //try to get the commands / delete word back / 
+        //http://www.chrisstead.com/archives/1082/visual-studio-code-extensions-editing-the-document/
+       //vscode.window.activeTextEditor.edit()
+    }
 
     public moveCamelCaseLeft(extendSelection: boolean) {
         var newSelections = []
@@ -340,7 +361,7 @@ export class CamelCaseNavigatorService implements ICamelCaseNavigatorService {
         var newPosition = currentSelection.active.translate(lineDelta, charDelta);
         var newAnchor = extendSelection ? currentSelection.anchor : newPosition;
         var newSelection = new vscode.Selection(newAnchor, newPosition);
-        
+
         return newSelection;
     }
 
