@@ -25,14 +25,15 @@ export function activate(context: vscode.ExtensionContext) {
         camelCaseMover.moveCamelCaseRight(true);
     });
 
-     let deleteCamelRight = vscode.commands.registerCommand('extension.deleteCamelCommand', () => {
-        camelCaseMover.deleteCamel();
+     let deleteCamelLeft = vscode.commands.registerCommand('extension.deleteCamelLeftCommand', () => {
+        camelCaseMover.deleteCamelLeft();
     });
 
     context.subscriptions.push(moveCamelLeft);
     context.subscriptions.push(moveCamelRight);
     context.subscriptions.push(extendCamelLeft);
     context.subscriptions.push(extendCamelRight);
+    context.subscriptions.push(deleteCamelLeft);
 }
 
 export function deactivate() {

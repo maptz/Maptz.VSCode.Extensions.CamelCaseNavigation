@@ -301,7 +301,7 @@ export class CamelCasingHelper {
 }
 
 export interface ICamelCaseNavigatorService {
-    deleteCamel() ;
+    deleteCamelLeft();
     moveCamelCaseLeft(extendSelection: boolean);
     moveCamelCaseRight(extendSelection: boolean);
 }
@@ -309,23 +309,22 @@ export interface ICamelCaseNavigatorService {
 export class CamelCaseNavigatorService implements ICamelCaseNavigatorService {
 
 
-    public deleteCamel() {
-        // var deleteCamel = true;
-        // for (let sel of vscode.window.activeTextEditor.selections) {
-        //     deleteCamel = deleteCamel && sel.end.isEqual(sel.start);
-        // }
+    public deleteCamelLeft() {
+         var deleteCamel = true;
+         for (let sel of vscode.window.activeTextEditor.selections) {
+             deleteCamel = deleteCamel && sel.end.isEqual(sel.start);
+         }
 
-        // //If there are no selections, then we'll select back one space in the camel direction...
-        // if (deleteCamel){
-        //     this.moveCamelCaseLeft(true);
-        // }
+         //If there are no selections, then we'll select back one space in the camel direction...
+         if (deleteCamel){
+             this.moveCamelCaseLeft(true);
+         }
+
         //and then just normally delete the selection.
-        var commands = vscode.commands.getCommands();
-        debugger;
-        throw "Delete command";
-        //try to get the commands / delete word back / 
+        vscode.commands.executeCommand("deleteLeft");
+        
+        //I don't think this is necessary, but if you need to edit the document, then here:
         //http://www.chrisstead.com/archives/1082/visual-studio-code-extensions-editing-the-document/
-       //vscode.window.activeTextEditor.edit()
     }
 
     public moveCamelCaseLeft(extendSelection: boolean) {
