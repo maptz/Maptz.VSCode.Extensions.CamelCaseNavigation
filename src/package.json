@@ -35,8 +35,12 @@
                 "title": "Move Camel Right"
             },
             {
-                "command": "extension.deleteCamelWordCommand",
+                "command": "extension.deleteCamelLeftCommand",
                 "title": "Delete previous camel word"
+            },
+            {
+                "command": "extension.deleteCamelRightCommand",
+                "title": "Delete next camel word"
             }
         ],
         "keybindings": [
@@ -63,6 +67,12 @@
             {
                 "command": "extension.deleteCamelLeftCommand",
                 "key": "ctrl+shift+backspace",
+                "when": "editorTextFocus"
+            }
+            ,
+            {
+                "command": "extension.deleteCamelRightCommand",
+                "key": "ctrl+l",
                 "when": "editorTextFocus"
             }
         ]

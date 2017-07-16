@@ -301,6 +301,7 @@ export class CamelCasingHelper {
 }
 
 export interface ICamelCaseNavigatorService {
+    deleteCamelRight();
     deleteCamelLeft();
     moveCamelCaseLeft(extendSelection: boolean);
     moveCamelCaseRight(extendSelection: boolean);
@@ -309,22 +310,49 @@ export interface ICamelCaseNavigatorService {
 export class CamelCaseNavigatorService implements ICamelCaseNavigatorService {
 
 
-    public deleteCamelLeft() {
-         var deleteCamel = true;
-         for (let sel of vscode.window.activeTextEditor.selections) {
-             deleteCamel = deleteCamel && sel.end.isEqual(sel.start);
-         }
+    public deleteCamel(isLeft: boolean) {
+        var deleteCamel = true;
+        for (let sel of vscode.window.activeTextEditor.selections) {
+            deleteCamel = deleteCamel && sel.end.isEqual(sel.start);
+        }
+        if (!deleteCamel) {
+            //and then just normally delete the selection.
+            vscode.commands.executeCommand("deleteLeft");
+            return;
+        }
 
-         //If there are no selections, then we'll select back one space in the camel direction...
-         if (deleteCamel){
-             this.moveCamelCaseLeft(true);
-         }
+        var newSelections: vscode.Selection[] = []
+        for (let sel of vscode.window.activeTextEditor.selections) {
+            if (isLeft) {
+                var selection = this.moveCamelCaseLeftInternal(true, sel);
+                newSelections.push(selection);
+            }
+            else {
+                var selection = this.moveCamelCaseRightInternal(true, sel);
+                newSelections.push(selection);
+            }
+        }
 
-        //and then just normally delete the selection.
-        vscode.commands.executeCommand("deleteLeft");
-        
+        vscode.window.activeTextEditor.edit(editBuilder => {
+            for (let selection of newSelections) {
+                editBuilder.delete(selection);
+            }
+        }, {
+                undoStopAfter: true,
+                undoStopBefore: true
+            }
+        )
+        return;
         //I don't think this is necessary, but if you need to edit the document, then here:
         //http://www.chrisstead.com/archives/1082/visual-studio-code-extensions-editing-the-document/
+    }
+
+    public deleteCamelLeft() {
+        this.deleteCamel(true);
+    }
+
+    public deleteCamelRight() {
+        this.deleteCamel(false);
     }
 
     public moveCamelCaseLeft(extendSelection: boolean) {
