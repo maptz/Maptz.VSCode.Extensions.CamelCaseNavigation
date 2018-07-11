@@ -3,6 +3,9 @@ REM https://maptz.visualstudio.com/
 REM Then go to Security (https://maptz.visualstudio.com/_details/security/tokens)
 
 @ECHO OFF
+set location=%cd%
+cd /D "%dp0/../"
  FOR /F "delims=" %%i in ('mgetvar VSCodePersonalAccessToken')  do @set accesscode=%%i
 echo publishing with accesscode %AccessCode%
 vsce publish -p %AccessCode%
+cd /D %location%
