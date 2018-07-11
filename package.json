@@ -3,7 +3,7 @@
     "displayName": "Camel Case Navigation",
     "description": "Provides Camel Case cursor navigation for the Visual Studio Code editor.",
     "homepage": "https://raw.githubusercontent.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation/master/ReadMe.md",
-    "version": "0.3.46",
+    "version": "0.3.47",
     "publisher": "maptz",
     "engines": {
         "vscode": "^1.11.0"

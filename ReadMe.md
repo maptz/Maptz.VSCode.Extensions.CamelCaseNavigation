@@ -4,6 +4,8 @@
 
 This extension provides camel-case navigation to the Visual Studio Code editor.
 
+![Camel Navigation](imgs/CSharp_camelcase.gif)
+
 It works by adding four extension methods to the IDE which override the default actions for the `left` and `right` arrow keys.  
 
 - MoveCamelLeftCommand (Ctrl+Left)
