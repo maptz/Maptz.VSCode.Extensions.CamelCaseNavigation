@@ -69,8 +69,7 @@
                 "command": "extension.deleteCamelLeftCommand",
                 "key": "ctrl+shift+backspace",
                 "when": "editorTextFocus"
-            }
-            ,
+            },
             {
                 "command": "extension.deleteCamelRightCommand",
                 "key": "ctrl+delete",
@@ -83,12 +82,12 @@
         "compile": "tsc -watch -p ./ts/",
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
-     "dependencies": {
-         "xregexp": "^3.1.1"
-      },
+    "dependencies": {
+        "xregexp": "^3.1.1"
+    },
     "devDependencies": {
         "typescript": "^2.0.3",
         "@types/node": "^6.0.40",
-         "vscode": "^1.0.0"
+        "vscode": "^1.0.0"
     }
 }

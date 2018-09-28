@@ -19,7 +19,7 @@ class CamelComponent {
         let areAllCharactersSpace = true;
         for (var index = 0; index < this.text.length; index++) {
             var element = this.text[index];
-            if (element != ' ') {
+            if (element != ' ' && element != '\t') {
                 areAllCharactersSpace = false;
                 break;
             }
@@ -65,7 +65,9 @@ class CamelComponent {
         return isLetter && char.toLowerCase() == char;
     }
     static isSpace(char) {
-        return /[\s]+/.test(char);
+        var retva = /[\s\t]+/.test(char);
+        console.log(`test ${char} : ${retva}`);
+        return retva;
     }
     get isWordComponent() {
         if (this.text.length == 0)
