@@ -47,31 +47,49 @@
         "keybindings": [
             {
                 "command": "extension.extendCamelLeftCommand",
+                "mac": "alt+shift+left",
+                "win": "ctrl+shift+left",
+                "linux": "ctrl+shift+left",
                 "key": "ctrl+shift+left",
                 "when": "editorTextFocus"
             },
             {
                 "command": "extension.extendCamelRightCommand",
+                "mac": "alt+shift+right",
+                "win": "ctrl+shift+right",
+                "linux": "ctrl+shift+right",
                 "key": "ctrl+shift+right",
                 "when": "editorTextFocus"
             },
             {
                 "command": "extension.moveCamelLeftCommand",
+                "mac": "alt+left",
+                "win": "ctrl+left",
+                "linux": "ctrl+left",
                 "key": "ctrl+left",
                 "when": "editorTextFocus"
             },
             {
                 "command": "extension.moveCamelRightCommand",
+                "mac": "alt+right",
+                "win": "ctrl+right",
+                "linux": "ctrl+right",
                 "key": "ctrl+right",
                 "when": "editorTextFocus"
             },
             {
                 "command": "extension.deleteCamelLeftCommand",
-                "key": "ctrl+shift+backspace",
+                "mac": "ctrl+backspace",
+                "win": "ctrl+backspace",
+                "linux": "ctrl+backspace",
+                "key": "ctrl+backspace",
                 "when": "editorTextFocus"
             },
             {
                 "command": "extension.deleteCamelRightCommand",
+                "mac": "ctrl+delete",
+                "win": "ctrl+delete",
+                "linux": "ctrl+delete",
                 "key": "ctrl+delete",
                 "when": "editorTextFocus"
             }
