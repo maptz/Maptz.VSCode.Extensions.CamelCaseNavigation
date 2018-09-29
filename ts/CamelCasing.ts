@@ -77,11 +77,26 @@ export class CamelComponent {
     }
     public static isSpace(char: string) {
 
-        var retva= /[\s\t]+/.test(char);
+        var retva = /[\s\t]+/.test(char);
         console.log(`test ${char} : ${retva}`);
         return retva;
     }
 
+    public get isLettersAndNumbersOnly() {
+        if (this.text.length == 0)
+            //If the word is of zero-length, return false. 
+            return false;
+
+        let areAllCharsLettersOrDigits = true;
+        for (var index = 0; index < this.text.length; index++) {
+            var element = this.text[index];
+            if (!CamelComponent.isLetterOrNumber(element)) {
+                areAllCharsLettersOrDigits = false;
+                break;
+            }
+        }
+        return areAllCharsLettersOrDigits;
+    }
 
 
     public get isWordComponent() {
@@ -211,10 +226,41 @@ export class CamelComponent {
 
 export class CamelString {
 
-    private _camelComponents: CamelComponent[];
+    private _camelComponents: CamelComponent[] = [];
     public get camelComponents() {
         return this._camelComponents;
     }
+
+    public static transformCS(camelString: CamelString): CamelString {
+        var retval = new CamelString("");
+        var camelComponents = camelString.camelComponents;
+        for (let i = 0; i < camelComponents.length; i++) {
+            var cc = camelComponents[i];
+            //If it is an interface definition, stop on the I'Something
+            if (cc.isLettersAndNumbersOnly
+                && cc.text.length > 2
+                && cc.text[0] == "I"
+                && CamelComponent.isUpperCase(cc.text[1])
+            ) {
+
+                var cc1 = new CamelComponent();
+                cc1.addChar(cc.text[0]);
+                retval.camelComponents.push(cc1);
+
+                var cc2 = new CamelComponent();
+                for (var j = 1; j < cc.text.length; j++) {
+                    cc2.addChar(cc.text[j]);
+                }
+                retval.camelComponents.push(cc2);
+
+            }
+            else {
+                retval.camelComponents.push(cc);
+            }
+        }
+        return retval;
+    }
+
 
     constructor(sourceString: string) {
         if (!sourceString) return;
@@ -252,12 +298,26 @@ export class CamelString {
 }
 
 export class CamelCasingHelper {
+    public static isCSharpMode(): boolean {
+        var langId = vscode.window.activeTextEditor.document.languageId;
+        var isSupportedLanguage = langId == "csharp" || langId == "typescript";
+        var isDisabled = vscode.workspace.getConfiguration("maptz.camelCaseNavigation").get("csharpmode") === false;
+
+        //To disable this feature add  "maptz.camelCaseNavigation.csharpmode": false to the settings.
+        return isSupportedLanguage && !isDisabled 
+    }
+
+
     public static getCamelWords(source: string) {
         if (source == null)
             //If the source is null, throw an exception.
             throw "ArgumentNullException('source')";
         //Create a new CamelString containing the source string. 
         let camelString = new CamelString(source);
+        var useCSMode = CamelCasingHelper.isCSharpMode();
+        if (useCSMode) {
+            camelString = CamelString.transformCS(camelString);
+        }
         let camelWords = [];
         for (var index = 0; index < camelString.camelComponents.length; index++) {
             var element = camelString.camelComponents[index];
@@ -273,6 +333,10 @@ export class CamelCasingHelper {
             throw "ArgumentNullException('source'')";
         //Create a new CamelString containing the source string. 
         let camelString = new CamelString(source);
+        var useCSMode = CamelCasingHelper.isCSharpMode();
+        if (useCSMode) {
+            camelString = CamelString.transformCS(camelString);
+        }
         if (camelString.camelComponents.length == 1)
             //If there are fewer than two camelComponents, just return the length of the string
             return source.length;
@@ -280,6 +344,7 @@ export class CamelCasingHelper {
             //Otherwise, return the length of the first camel component (i.e. the index of the first CamelComponent)
             return camelString.camelComponents[0].text.length;
     }
+
 
 
     /// <summary>
@@ -291,8 +356,12 @@ export class CamelCasingHelper {
         if (source == null)
             throw "ArgumentNullException('source')";
 
-        //Create a new CamelString containing the source string. 
+        //Create a new CamelString containing the source string.     
         let camelString = new CamelString(source);
+        var useCSMode = CamelCasingHelper.isCSharpMode();
+        if (useCSMode) {
+            camelString = CamelString.transformCS(camelString);
+        }
         if (camelString.camelComponents.length == 1)
             //If there are fewer than two camelComponents, just return zero.
             return 0;
@@ -311,6 +380,7 @@ export interface ICamelCaseNavigatorService {
 }
 
 export class CamelCaseNavigatorService implements ICamelCaseNavigatorService {
+
 
 
     public deleteCamel(isLeft: boolean) {

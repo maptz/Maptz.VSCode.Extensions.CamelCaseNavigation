@@ -5,6 +5,7 @@ import * as CamelCasing from './CamelCasing';
 
 export function activate(context: vscode.ExtensionContext) {
 
+
     let camelCaseMover: CamelCasing.ICamelCaseNavigatorService;
     camelCaseMover = new CamelCasing.CamelCaseNavigatorService();
 
