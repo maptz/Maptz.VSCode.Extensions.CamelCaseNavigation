@@ -25,3 +25,9 @@ Alternatively, open Visual Studio code, press `Ctrl+P` and type:
 
 The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation).
 
+## Release Notes
+
+### Version 0.3.49
+
+- Updated the default code bindings for different platforms. See [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation/issues/18) and [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation/issues/20)
+- Enhanced the behaviour when using tabs rather than spaces. See [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation/issues/19)
