@@ -27,6 +27,10 @@ The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSC
 
 ## Release Notes
 
+### Version 1.0.1
+
+- Removed malicious dependencies
+
 ### Version 1.0.0
 
 - This version is bumped to an official version.
