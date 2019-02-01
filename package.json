@@ -12,7 +12,6 @@
     "categories": [
         "Other"
     ],
-    "icon": "imgs/Icon.png",
     "activationEvents": [
         "*"
     ],

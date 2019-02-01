@@ -29,7 +29,7 @@ The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSC
 
 ### Version 1.0.1
 
-- Removed malicious dependencies
+- Updated npm dependencies.
 
 ### Version 1.0.0
 
