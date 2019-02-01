@@ -27,6 +27,10 @@ The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSC
 
 ## Release Notes
 
+### Version 1.0.0
+
+- This version is bumped to an official version.
+
 ### Version 0.3.53
 
 - Fixed a bug that prevented the selection from scrolling into view when the cursor moves out of view.
