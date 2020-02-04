@@ -2,6 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
 const CamelCasing = require("./CamelCasing");
+const IConfiguration = require("./IConfiguration");
+function loadConfiguration() {
+    let loadedConfig = vscode.workspace
+        .getConfiguration()
+        .get("maptz.camelcasenavigation");
+    let config = Object.assign({}, IConfiguration.DefaultConfigurationSection);
+    config = Object.assign(config, loadedConfig);
+    return config;
+}
+let isCamelModeOn = true;
+var configuration = loadConfiguration();
+if (configuration.allowToggleMode) {
+    isCamelModeOn = configuration.isCamelNavigationOnByDefault;
+}
 function navigateToSelection() {
     vscode.window.activeTextEditor.revealRange(new vscode.Range(vscode.window.activeTextEditor.selection.start, vscode.window.activeTextEditor.selection.end), vscode.TextEditorRevealType.Default);
 }
@@ -9,29 +23,67 @@ function activate(context) {
     let _something = "";
     let camelCaseMover;
     camelCaseMover = new CamelCasing.CamelCaseNavigatorService();
-    let moveCamelLeft = vscode.commands.registerCommand('extension.moveCamelLeftCommand', () => {
-        camelCaseMover.moveCamelCaseLeft(false);
-        navigateToSelection();
+    let toggleCamelMode = vscode.commands.registerCommand('camelcasenavigation.toggleCamelMode', () => {
+        if (!configuration.allowToggleMode)
+            return;
+        isCamelModeOn = !isCamelModeOn;
+        var onOffText = isCamelModeOn ? "on" : "off";
+        vscode.window.showInformationMessage("Camel Navigation is now " + onOffText);
     });
-    let moveCamelRight = vscode.commands.registerCommand('extension.moveCamelRightCommand', () => {
-        camelCaseMover.moveCamelCaseRight(false);
-        navigateToSelection();
+    let moveCamelLeft = vscode.commands.registerCommand('camelcasenavigation.moveCamelLeftCommand', () => {
+        if (isCamelModeOn) {
+            camelCaseMover.moveCamelCaseLeft(false);
+            navigateToSelection();
+        }
+        else {
+            vscode.commands.executeCommand("cursorWordLeft");
+        }
+    });
+    let moveCamelRight = vscode.commands.registerCommand('camelcasenavigation.moveCamelRightCommand', () => {
+        if (isCamelModeOn) {
+            camelCaseMover.moveCamelCaseRight(false);
+            navigateToSelection();
+        }
+        else {
+            vscode.commands.executeCommand("cursorWordRight");
+        }
     });
     // The commandId parameter must match the command field in package.json
-    let extendCamelLeft = vscode.commands.registerCommand('extension.extendCamelLeftCommand', () => {
-        camelCaseMover.moveCamelCaseLeft(true);
-        navigateToSelection();
+    let extendCamelLeft = vscode.commands.registerCommand('camelcasenavigation.extendCamelLeftCommand', () => {
+        if (isCamelModeOn) {
+            camelCaseMover.moveCamelCaseLeft(true);
+            navigateToSelection();
+        }
+        else {
+            vscode.commands.executeCommand("cursorWordLeftSelect");
+        }
     });
-    let extendCamelRight = vscode.commands.registerCommand('extension.extendCamelRightCommand', () => {
-        camelCaseMover.moveCamelCaseRight(true);
-        navigateToSelection();
+    let extendCamelRight = vscode.commands.registerCommand('camelcasenavigation.extendCamelRightCommand', () => {
+        if (isCamelModeOn) {
+            camelCaseMover.moveCamelCaseRight(true);
+            navigateToSelection();
+        }
+        else {
+            vscode.commands.executeCommand("cursorWordRightSelect");
+        }
     });
-    let deleteCamelLeft = vscode.commands.registerCommand('extension.deleteCamelLeftCommand', () => {
-        camelCaseMover.deleteCamelLeft();
-        navigateToSelection();
+    let deleteCamelLeft = vscode.commands.registerCommand('camelcasenavigation.deleteCamelLeftCommand', () => {
+        if (isCamelModeOn) {
+            camelCaseMover.deleteCamelLeft();
+            navigateToSelection();
+        }
+        else {
+            vscode.commands.executeCommand("deleteWordLeft");
+        }
     });
-    let deleteCamelRight = vscode.commands.registerCommand('extension.deleteCamelRightCommand', () => {
-        camelCaseMover.deleteCamelRight();
+    let deleteCamelRight = vscode.commands.registerCommand('camelcasenavigation.deleteCamelRightCommand', () => {
+        if (isCamelModeOn) {
+            camelCaseMover.deleteCamelRight();
+            navigateToSelection();
+        }
+        else {
+            vscode.commands.executeCommand("deleteWordRight");
+        }
     });
     context.subscriptions.push(moveCamelLeft);
     context.subscriptions.push(moveCamelRight);

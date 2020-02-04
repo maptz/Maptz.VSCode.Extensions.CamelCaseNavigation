@@ -21,11 +21,40 @@ Alternatively, open Visual Studio code, press `Ctrl+P` and type:
 
 > ext install camelcasenavigation
 
+## Toggle mode
+
+A new feature in version 1.0.2 is toggle mode. By using the command `camelcasenavigation.toggleCamelMode`, you can turn camel case navigation on or off. When camel case navigation is off, the arrow keys revert to their default behaviour. 
+
+This command is not currently mapped to a default keybinding. To map it to a default keybinding add the following to your `keybindings.json` file:
+
+```
+    {
+        "key": "ctrl+shift+l",
+        "command": "camelcasenavigation.toggleCamelMode"
+    }
+```
+
+
+## Configuration
+
+The extension provides configuration settings, allowing you to turn on or off features. Create a settings in your vscode settings file (either user or workspace) that conforms to the following specification:
+
+```
+    "maptz.camelcasenaviation": {
+      "allowToggleMode" : true,                 //Allows you to use toggle mode
+      "isCamelNavigationOnByDefault" : true     //When toggle mode is on, determines whether Camel Navigation is on (true) or off (false) when the application starts.
+    }
+```
+
 ## Source Code
 
 The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation).
 
 ## Release Notes
+
+### Version 1.0.2
+
+- Added ability to toggle camel mode on or off. 
 
 ### Version 1.0.1
 
