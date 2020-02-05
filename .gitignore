@@ -24,6 +24,7 @@ gulp-tsc*/
 #Node modules
 node_modules/
 .tscache
+package-lock.json
 
 #Bower components
 bower_components/

@@ -19,7 +19,7 @@
     "contributes": {
         "commands": [
             {
-                "command":"camelcasenavigation.toggleCamelMode",
+                "command": "camelcasenavigation.toggleCamelMode",
                 "title": "Toggle Camel case navigation"
             },
             {
