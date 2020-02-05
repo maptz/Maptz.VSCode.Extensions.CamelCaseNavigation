@@ -15,6 +15,7 @@
     "activationEvents": [
         "*"
     ],
+    "icon":"https://raw.githubusercontent.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation/master/imgs/Icon-Medium.png",
     "main": "./out/extension.js",
     "contributes": {
         "commands": [
