@@ -3,7 +3,7 @@
     "displayName": "Camel Case Navigation",
     "description": "Provides Camel Case cursor navigation for the Visual Studio Code editor.",
     "homepage": "https://raw.githubusercontent.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation/master/ReadMe.md",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "publisher": "maptz",
     "engines": {
         "vscode": "^1.11.0"
@@ -46,6 +46,34 @@
             {
                 "command": "maptz.camelcasenavigation.deleteCamelRightCommand",
                 "title": "Delete next camel word"
+            },
+            {
+                "command": "extension.toggleCamelMode",
+                "title": "Toggle Camel case navigation (Deprecated)"
+            },
+            {
+                "command": "extension.extendCamelLeftCommand",
+                "title": "Extend Camel Left  (Deprecated)"
+            },
+            {
+                "command": "extension.extendCamelRightCommand",
+                "title": "Extend Camel Right (Deprecated)"
+            },
+            {
+                "command": "extension.moveCamelLeftCommand",
+                "title": "Move Camel Left (Deprecated)"
+            },
+            {
+                "command": "extension.moveCamelRightCommand",
+                "title": "Move Camel Right (Deprecated)"
+            },
+            {
+                "command": "extension.deleteCamelLeftCommand",
+                "title": "Delete previous camel word  (Deprecated)"
+            },
+            {
+                "command": "extension.deleteCamelRightCommand",
+                "title": "Delete next camel word (Deprecated)"
             }
         ],
         "keybindings": [

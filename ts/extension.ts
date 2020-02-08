@@ -38,20 +38,22 @@ export function activate(context: vscode.ExtensionContext) {
     let camelCaseMover: CamelCasing.ICamelCaseNavigatorService;
     camelCaseMover = new CamelCasing.CamelCaseNavigatorService();
 
-    // var allCommandNames = [
-    //     "deleteCamelLeftCommand",
-    //     "deleteCamelRightCommand",
-    //     "extendCamelLeftCommand",
-    //     "extendCamelRightCommand",
-    //     "moveCamelLeftCommand",
-    //     "moveCamelRightCommand",
-    //     "toggleCamelMode"
-    // ];
-    // for(let cn of allCommandNames){
-    //     vscode.commands.registerCommand('extension.' + cn, () => {
-    //         vscode.window.showInformationMessage("Warning: The names of the CamelCaseNavigation commands have changed. Please change any keybindings to match.");
-    //     });
-    // }
+    var allCommandNames = [
+        "deleteCamelLeftCommand",
+        "deleteCamelRightCommand",
+        "extendCamelLeftCommand",
+        "extendCamelRightCommand",
+        "moveCamelLeftCommand",
+        "moveCamelRightCommand",
+        "toggleCamelMode"
+    ];
+    for(let cn of allCommandNames){
+        vscode.commands.registerCommand('extension.' + cn, () => {
+            vscode.window.showInformationMessage("Deprecated: CamelCaseNavigation extension commands have changed.\r\nUpdate keybindings from \r\n" 
+            + " 'extension." + cn + "' to 'maptz.camelcasenavigation." + cn + "'."
+            );
+        });
+    }
 
     let toggleCamelMode = vscode.commands.registerCommand('maptz.camelcasenavigation.toggleCamelMode', () => {
         if (!configuration.allowToggleMode) return;
