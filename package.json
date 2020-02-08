@@ -20,37 +20,37 @@
     "contributes": {
         "commands": [
             {
-                "command": "camelcasenavigation.toggleCamelMode",
+                "command": "maptz.camelcasenavigation.toggleCamelMode",
                 "title": "Toggle Camel case navigation"
             },
             {
-                "command": "camelcasenavigation.extendCamelLeftCommand",
+                "command": "maptz.camelcasenavigation.extendCamelLeftCommand",
                 "title": "Extend Camel Left"
             },
             {
-                "command": "camelcasenavigation.extendCamelRightCommand",
+                "command": "maptz.camelcasenavigation.extendCamelRightCommand",
                 "title": "Extend Camel Right"
             },
             {
-                "command": "camelcasenavigation.moveCamelLeftCommand",
+                "command": "maptz.camelcasenavigation.moveCamelLeftCommand",
                 "title": "Move Camel Left"
             },
             {
-                "command": "camelcasenavigation.moveCamelRightCommand",
+                "command": "maptz.camelcasenavigation.moveCamelRightCommand",
                 "title": "Move Camel Right"
             },
             {
-                "command": "camelcasenavigation.deleteCamelLeftCommand",
+                "command": "maptz.camelcasenavigation.deleteCamelLeftCommand",
                 "title": "Delete previous camel word"
             },
             {
-                "command": "camelcasenavigation.deleteCamelRightCommand",
+                "command": "maptz.camelcasenavigation.deleteCamelRightCommand",
                 "title": "Delete next camel word"
             }
         ],
         "keybindings": [
             {
-                "command": "camelcasenavigation.extendCamelLeftCommand",
+                "command": "maptz.camelcasenavigation.extendCamelLeftCommand",
                 "mac": "alt+shift+left",
                 "win": "ctrl+shift+left",
                 "linux": "ctrl+shift+left",
@@ -58,7 +58,7 @@
                 "when": "editorTextFocus"
             },
             {
-                "command": "camelcasenavigation.extendCamelRightCommand",
+                "command": "maptz.camelcasenavigation.extendCamelRightCommand",
                 "mac": "alt+shift+right",
                 "win": "ctrl+shift+right",
                 "linux": "ctrl+shift+right",
@@ -66,7 +66,7 @@
                 "when": "editorTextFocus"
             },
             {
-                "command": "camelcasenavigation.moveCamelLeftCommand",
+                "command": "maptz.camelcasenavigation.moveCamelLeftCommand",
                 "mac": "alt+left",
                 "win": "ctrl+left",
                 "linux": "ctrl+left",
@@ -74,7 +74,7 @@
                 "when": "editorTextFocus"
             },
             {
-                "command": "camelcasenavigation.moveCamelRightCommand",
+                "command": "maptz.camelcasenavigation.moveCamelRightCommand",
                 "mac": "alt+right",
                 "win": "ctrl+right",
                 "linux": "ctrl+right",
@@ -82,7 +82,7 @@
                 "when": "editorTextFocus"
             },
             {
-                "command": "camelcasenavigation.deleteCamelLeftCommand",
+                "command": "maptz.camelcasenavigation.deleteCamelLeftCommand",
                 "mac": "ctrl+backspace",
                 "win": "ctrl+backspace",
                 "linux": "ctrl+backspace",
@@ -90,7 +90,7 @@
                 "when": "editorTextFocus"
             },
             {
-                "command": "camelcasenavigation.deleteCamelRightCommand",
+                "command": "maptz.camelcasenavigation.deleteCamelRightCommand",
                 "mac": "ctrl+delete",
                 "win": "ctrl+delete",
                 "linux": "ctrl+delete",

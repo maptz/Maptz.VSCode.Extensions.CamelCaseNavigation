@@ -13,6 +13,7 @@ It works by adding four extension methods to the IDE which override the default 
 - ExtendCamelLeftCommand  (Ctrl+Shift+Left)
 - ExtendCamelRightCommand (Ctrl+Shift+Right)
 
+
 ## Installing
 
 You can install the latest version of the extension is available on the Visual Studio Marketplace [here](https://marketplace.visualstudio.com/items?itemName=maptz.camelcasenavigation).
@@ -51,6 +52,33 @@ The extension provides configuration settings, allowing you to turn on or off fe
 The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation).
 
 ## Release Notes
+
+### Version 1.1.0
+
+- There is a breaking change in this version. The commands exposed by the extension has been renamed, so any hotkeys need to be updated. 
+
+Extensions were previously named `extension.[command-name]`, but this has now been changed to `camelcasenavigation.[command-name]`.
+
+You will need to update any custom keyboard hotkeys you have re-assigned to match the new command names:
+
+```
+- maptz.camelcasenavigation.deleteCamelLeftCommand
+- maptz.camelcasenavigation.deleteCamelRightCommand
+- maptz.camelcasenavigation.extendCamelLeftCommand
+- maptz.camelcasenavigation.extendCamelRightCommand
+- maptz.camelcasenavigation.moveCamelLeftCommand
+- maptz.camelcasenavigation.moveCamelRightCommand
+- maptz.camelcasenavigation.toggleCamelMode
+```
+
+e.g.:
+```
+    {
+        "key": "ctrl+j",
+        "command": "maptz.camelcasenavigation.deleteCamelRightCommand",
+        "when": "editorTextFocus"
+    }
+```
 
 ### Version 1.0.2
 
