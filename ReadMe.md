@@ -71,7 +71,7 @@ You will need to update any custom keyboard hotkeys you have re-assigned to matc
 - maptz.camelcasenavigation.toggleCamelMode
 ```
 
-e.g.:
+So your keybindings might look like this:
 ```
     {
         "key": "ctrl+j",
