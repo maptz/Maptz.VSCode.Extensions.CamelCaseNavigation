@@ -54,7 +54,7 @@ The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSC
 ## Release Notes
 ### Version 1.1.1
 
-Added deprecated messages for the previous command names. 
+- Added deprecated messages for the previous command names. 
 
 ### Version 1.1.0
 
