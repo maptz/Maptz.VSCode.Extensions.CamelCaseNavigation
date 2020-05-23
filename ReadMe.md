@@ -41,7 +41,7 @@ This command is not currently mapped to a default keybinding. To map it to a def
 The extension provides configuration settings, allowing you to turn on or off features. Create a settings in your vscode settings file (either user or workspace) that conforms to the following specification:
 
 ```
-    "maptz.camelcasenaviation": {
+    "maptz.camelcasenavigation": {
       "allowToggleMode" : true,                 //Allows you to use toggle mode
       "isCamelNavigationOnByDefault" : true     //When toggle mode is on, determines whether Camel Navigation is on (true) or off (false) when the application starts.
     }
