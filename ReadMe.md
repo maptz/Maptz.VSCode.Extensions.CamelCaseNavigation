@@ -52,6 +52,10 @@ The extension provides configuration settings, allowing you to turn on or off fe
 The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation).
 
 ## Release Notes
+### Version 1.1.2
+
+- Updated configuration settings. 
+
 ### Version 1.1.1
 
 - Added deprecated messages for the previous command names. 
@@ -82,9 +86,7 @@ So your keybindings might look like this:
         "when": "editorTextFocus"
     }
 ```
-### Version 1.1.2
 
-- Updated configuration settings. 
 
 ### Version 1.0.2
 
