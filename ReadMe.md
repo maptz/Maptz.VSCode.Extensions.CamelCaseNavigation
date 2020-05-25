@@ -82,6 +82,9 @@ So your keybindings might look like this:
         "when": "editorTextFocus"
     }
 ```
+### Version 1.1.2
+
+- Updated configuration settings. 
 
 ### Version 1.0.2
 
