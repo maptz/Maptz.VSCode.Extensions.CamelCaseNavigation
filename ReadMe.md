@@ -31,7 +31,7 @@ This command is not currently mapped to a default keybinding. To map it to a def
 ```
     {
         "key": "ctrl+shift+l",
-        "command": "camelcasenavigation.toggleCamelMode"
+        "command": "maptz.camelcasenavigation.toggleCamelMode"
     }
 ```
 
