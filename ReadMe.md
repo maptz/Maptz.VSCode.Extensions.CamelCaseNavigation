@@ -52,6 +52,10 @@ The extension provides configuration settings, allowing you to turn on or off fe
 The source code is available on GitHub [here](https://github.com/maptz/Maptz.VSCode.Extensions.CamelCaseNavigation).
 
 ## Release Notes
+### Version 1.1.3
+
+- Fixed `console.log` issue.
+
 ### Version 1.1.2
 
 - Updated configuration settings. 
