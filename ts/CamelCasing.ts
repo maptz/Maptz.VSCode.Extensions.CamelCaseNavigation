@@ -78,7 +78,7 @@ export class CamelComponent {
     public static isSpace(char: string) {
 
         var retva = /[\s\t]+/.test(char);
-        console.log(`test ${char} : ${retva}`);
+        //console.log(`test ${char} : ${retva}`);
         return retva;
     }
 
