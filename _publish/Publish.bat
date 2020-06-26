@@ -1,6 +1,7 @@
 @ECHO OFF
 REM You need to make sure you've got an up to date PersonalAccessToken from VSTS 
-REM https://maptz.visualstudio.com/
+REM https://dev.azure.com/maptz/maptz-vscode-extensions
+REM See https://code.visualstudio.com/api/working-with-extensions/publishing-extension
 REM Then go to Security (https://maptz.visualstudio.com/_details/security/tokens)
 
 set location=%cd%

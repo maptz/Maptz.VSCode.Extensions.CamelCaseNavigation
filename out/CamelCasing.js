@@ -66,7 +66,7 @@ class CamelComponent {
     }
     static isSpace(char) {
         var retva = /[\s\t]+/.test(char);
-        console.log(`test ${char} : ${retva}`);
+        //console.log(`test ${char} : ${retva}`);
         return retva;
     }
     get isLettersAndNumbersOnly() {
