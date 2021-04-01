@@ -15,7 +15,7 @@
     "activationEvents": [
         "*"
     ],
-    "icon":"imgs/Icon-Medium.png",
+    "icon": "imgs/Icon-Medium.png",
     "main": "./out/extension.js",
     "contributes": {
         "commands": [
@@ -139,7 +139,6 @@
             }
         ]
     },
-    
     "scripts": {
         "vscode:prepublish": "tsc -p ./ts/",
         "compile": "tsc -watch -p ./ts/",
