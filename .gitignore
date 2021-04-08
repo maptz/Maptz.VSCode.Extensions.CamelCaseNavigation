@@ -28,3 +28,4 @@ package-lock.json
 
 #Bower components
 bower_components/
+.vs/
