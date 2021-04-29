@@ -18,6 +18,7 @@ if (configuration.allowToggleMode) {
 }
 function navigateToSelection() {
     vscode.window.activeTextEditor.revealRange(new vscode.Range(vscode.window.activeTextEditor.selection.start, vscode.window.activeTextEditor.selection.end), vscode.TextEditorRevealType.Default);
+    vscode.commands.executeCommand('editor.action.wordHighlight.trigger');
 }
 function activate(context) {
     let _something = "";
