@@ -3,7 +3,10 @@
 import * as vscode from 'vscode';
 import * as CamelCasing from './CamelCasing';
 import * as IConfiguration from "./IConfiguration";
-
+/*
+NOTE I was having an issue with vscode-textmate. 
+It was showing up in the Extensions menu, with it selected, look for RuntimeStatus. 
+*/
 
 
 function loadConfiguration() {
