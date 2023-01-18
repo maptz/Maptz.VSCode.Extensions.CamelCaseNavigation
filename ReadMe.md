@@ -13,6 +13,32 @@ It works by adding four extension methods to the IDE which override the default 
 - ExtendCamelLeftCommand  (Ctrl+Shift+Left)
 - ExtendCamelRightCommand (Ctrl+Shift+Right)
 
+## Important - Deprecation Notice!
+
+Since VS Code v1.25, camel-case navigation has been built into VS Code natively. To achieve match the default functionality provided by this extension, please add teh following commands to your keybindings.json file.
+
+```json
+[
+    {
+        "key":"ctrl+left",
+        "command": "cursorWordPartLeft"
+    },
+    {
+        "key":"ctrl+shift+left",
+        "command": "cursorWordPartLeftSelect"
+    },
+    {
+        "key":"ctrl+right",
+        "command": "cursorWordPartRight"
+    },
+    {
+        "key":"ctrl+shift+right",
+        "command": "cursorWordPartRightSelect"
+    },
+]
+```
+
+I will keep maintaining this repository for the foreseeable future, but it is unlikely that I will implement any feature updates at this point.
 
 ## Installing
 
